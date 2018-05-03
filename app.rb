@@ -34,10 +34,46 @@ end
 get '/template' do
 
   # note: specify the template name with a symbol
+  # thhis is like res.render() in express
   erb :index
 end
 
 # partials are included in a "layout.erb" (it has to be called that) view
 # via the yield statement
+
+
+# lets pass data to our template
+get '/friendster' do
+  # any INSTANCE variables you delcare will be passed to
+  # the templat(ing engin)e automatically
+  @page_title = "Some friends"
+  @message = "Thank for useing friendster here are the friends"
+  @friends = [
+    {
+      name: "Zoe",
+      hair: "blonde"
+    },
+    {
+      name: "Irwin",
+      hair: "hat"
+    },
+    {
+      name: "Ben",
+      hair: "light brown"
+    },
+    {
+      name: "MJ",
+      hair: "brown"
+    }
+  ]
+  erb :friends
+
+
+end
+
+
+
+
+
 
 
