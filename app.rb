@@ -73,7 +73,26 @@ end
 
 
 
+# what if we wanna send back JSON
 
+get '/somejson' do
+  data_to_return = {
+    message: "Hey i'm the somejson route"
+  }
+  # this is like res.json() in express 
+  data_to_return.to_json
+
+end
+
+
+# json and params
+get '/params_and_json/:some_param' do
+  {
+    status: 200,
+    message: "Thanks for visiting the route at #{params[:some_param]}"
+  }.to_json
+
+end
 
 
 
