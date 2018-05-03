@@ -29,7 +29,13 @@ get '/hello/:some_param' do
 end
 
 
-# render a template
+# render a template - we will use erb which is the templating 
+# engine that comes with Ruby
+get '/template' do
+
+  # note: specify the template name with a symbol
+  erb :index
+end
 
 
 
