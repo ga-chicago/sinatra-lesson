@@ -119,9 +119,9 @@ get '/enemies' do
 end
 
 # THIS IS CHEATING
-# DO NOT PUT DATA IN THE TOP LEVEL OF YOUR APPLICATION CONTROLLER
+# DO NOT PUT DATA DIRECTLY IN YOUR APPLICATION CONTROLLER
 # OR ANY OTHER CONTROLLER 
-# WE JUST DID IT HERE FOR THE SAKE OF THIS EXERCISE
+# WE DID IT HERE JUST FOR THE SAKE OF THIS EXERCISE
 $places = [
   {
     name: "Alaska",
@@ -135,7 +135,7 @@ $places = [
   },
   {
     name: "Adjara Region",
-    country: "საკართველო",
+    country: "საქართველო",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAM2A5-pjfizlS2zXHT88Agqlqp9NG3cOCP5IBqmctA3ane8QIsw"
   },
   {
@@ -149,12 +149,6 @@ $places = [
     image: "https://2h7qju2c3qvcc3s86ekn8n0-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/shutterstock_vilnius-lithuania.jpg"
   }
 ]
-
-# write a route at "/places_to_go" 
-  # this route should return an array as JSON with 5 place hashes
-  # properties must include: name, image
-  # you can include whatever else you want
-
 
 get '/places' do 
 
@@ -175,6 +169,31 @@ get '/places_to_go' do
 
 end
 
+
+# another approach -- you could have 2 more routes instead of one
+# one route that just serves the list
+# and one that just serves data for one place
+# this would mean you didn't have to load all the data all at once 
+# on the client side
+# you could make the case that this approach is more RESTful -- the first route below being like an index route, and the second one being like a show route
+
+get '/placelist' do
+  ($places.map { |p| p[:name] }).to_json
+end
+
+get '/place/:id' do
+  $places[params[:id].to_i].to_json
+end
+
+
+
+
+
+
+# write a route at "/places_to_go" 
+  # this route should return an array as JSON with 5 place hashes
+  # properties must include: name, image
+  # you can include whatever else you want
 
 # create a template called places_to_go.erb
   # you will need a route that just renders this template
