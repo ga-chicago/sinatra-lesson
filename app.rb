@@ -37,5 +37,7 @@ get '/template' do
   erb :index
 end
 
+# partials are included in a "layout.erb" (it has to be called that) view
+# via the yield statement
 
 
