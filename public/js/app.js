@@ -21,7 +21,10 @@ $('button').on('click', (event) => {
 function makeDivs(response) {
   response.forEach(place => {
     const $placeDiv = $('<div>').css({
-      "background-image": "url(" + place.image + ")"
+      "background-image": "url(" + place.image + ")",
+      "background-size": "cover",
+      "background-position": "center" /*,
+      "background-repeat": "no-repeat"*/
     }).text(place.name + " (" + place.country + ") ")
     $('#places').append($placeDiv)
   })

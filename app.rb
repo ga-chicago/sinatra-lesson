@@ -121,6 +121,7 @@ end
 # THIS IS CHEATING
 # DO NOT PUT DATA IN THE TOP LEVEL OF YOUR APPLICATION CONTROLLER
 # OR ANY OTHER CONTROLLER 
+# WE JUST DID IT HERE FOR THE SAKE OF THIS EXERCISE
 $places = [
   {
     name: "Alaska",
@@ -164,8 +165,12 @@ get '/places' do
 end
 
 get '/places_to_go' do
-  places = somethingFromDatabase
+    # ordinarily our data will come from a model (i.e. the database)
+    # places = some_logic_to_get_stuff_from_databse
+    # ... or maybe an ajax call
+    # places = somethingFromSomeAjaxCallOrEtc
 
+    # for now we just use the global data
     $places.to_json
 
 end
